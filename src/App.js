@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { withStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import PokemonList from "./components/PokemonList";
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
-function App() {
+const App = (props) => {
+  const classes = props.classes;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={clsx(classes.pokeWrap)}>
+      <CssBaseline />
+      <Container maxWidth="md">
+        <Typography variant="h3" gutterBottom align="center" className={clsx(classes.mainTitle)}>
+          Pokemon API
+        </Typography>
+        <PokemonList />
+      </Container>    
     </div>
   );
 }
 
-export default App;
+const styles = {
+  pokeWrap: {
+    background: "#00a1ed",
+    padding: "3rem",
+    height: '100vh'
+  },
+  mainTitle: {
+    color: 'white',
+    marginBottom: '4rem'
+  } 
+};
+
+export default withStyles(styles)(App);
