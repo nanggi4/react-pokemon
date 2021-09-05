@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
-import Pokemon from './Pokemon';
+import Pokemon from './PokemonCard';
 
 const PokemonList = (props) => {
-  const classes = props.classes;
   const [pokemons, setPokemons] = useState([]);
   const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon");
 
   useEffect(() => {
     axios.get(currentPageUrl).then(res => {
-      console.log(res.data);
       setPokemons(res.data.results);
-      console.log(pokemons);
     });
   }, [currentPageUrl]);
 
@@ -24,7 +20,10 @@ const PokemonList = (props) => {
         {pokemons.map((pokemon, index) => {
           return (
             <Grid item xs={12} sm={3}>
-              <Pokemon pokemon={pokemon} key={index} />
+              <Pokemon 
+                key={index} 
+                pokemon={pokemon}
+              />
             </Grid>
           )
         })}                        
