@@ -44,12 +44,9 @@ const PokemonDetail = (props) => {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
+        <CardActions className={clsx(classes.pokemonCardActionWrap)}>
+          <Button size="small" color="primary" variant="contained" href="/">
+            Back
           </Button>
         </CardActions>
       </Card>
@@ -60,9 +57,13 @@ const PokemonDetail = (props) => {
 const styles = {
   pokemonCard: {
     maxWidth: 345,
+    margin: '0 auto'
   },
   pokemonImg: {
-    height: 140,
+    height: 240,
+  },
+  pokemonCardActionWrap: {
+    justifyContent: 'center'
   }
 };
 
